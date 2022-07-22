@@ -7,7 +7,6 @@ atomic_tests:
   The memory of lsass.exe is often dumped for offline credential theft attacks. This can be achieved with Sysinternals
     ProcDump.
     
-    Upon successful execution, you should see the following file created c:\windows\temp\lsass_dump.dmp.
   supported_platforms:
   - windows
   input_arguments:
